@@ -1,8 +1,8 @@
 1.CPU 执行机器语言
   当我们在Visual Studio上用C++语言写的代码，hello.cpp文件会由Compiler编译成hello.exe文件
 而后交给windows，再由windows调配从SSD中拿到RAM里由CPU执行.CPU只能执行机器代码（汇编语言）
-2.Compiler的工作就是把高级的计算机语言如C++，Java，Python翻译成机器语言.（适当延伸，compiler的作用只有编译，比如main.cpp和jump.cpp编译成main.ojb和jump.ojb）
-  而后，由链接器Linker介入将不同的ojb文件链接起来比如main.ojb->jump.ojb，（借此引入疑问，那如果compiler在main.cpp里面反正由jump（）的函数名时，如何避免出现找不到函数而编译失败的问题）
+2.Compiler的工作就是把高级的计算机语言如C++，Java，Python翻译成机器语言.（适当延伸，compiler的作用只有编译，比如main.cpp和jump.cpp编译成main.obj和jump.obj）
+  而后，由链接器Linker介入将不同的obj文件链接起来比如main.obj->jump.obj，（借此引入疑问，那如果compiler在main.cpp里面反正由jump（）的函数名时，如何避免出现找不到函数而编译失败的问题）
 这需要引入头文件比如player.h的概念，cpp文件里面的#include "player.h"这串代码，就是在避免compiler找不到函数名的问题，但是这不是compiler在引用或者在头文件里面查询
 这里需要引入Preprocessor（预处理器），预处理器会更加粗暴的直接把player.h的内容直接展开，所以compiler看到的内容并没有include，而是直接看见头文件展开后的内容，所以只要头文件中有写，
 cpp文件编译的时候就不会出现找不到函数的情况

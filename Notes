@@ -1,0 +1,11 @@
+函数
+1.函数是一段可以重复使用的代码
+int add(int a, int b)
+{
+  return a+b;
+}
+之后可以重复调用add函数，
+cout<<add(1,2)<<end1;
+cout<<add(100,200)<<end1;
+2.return 是吧结果送回来，cout是将结果输出到屏幕
+3.void是表示这个函数没有返回值

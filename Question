@@ -1,0 +1,42 @@
+1.如果写一个函数C++
+int square(int x)
+功能
+输入：5
+返回：25
+int square（int x）
+{
+return x*x;
+}
+2.如果写一个函数C++
+int bigger(int a, int b)
+返回两个较大的数
+int bigger(int a, int b)
+{
+  if (a > b){
+    return a;
+    }else{
+    return b;
+  }
+}
+3.如果写一个函数C++
+bool isEven(int x)
+要求4-> true
+    7-> false
+bool isEven(int x){
+  if (x % 2 = 0){
+    return true;
+    }else{
+    return false;
+  }
+}
+4.如果写一个函数C++
+int absValue（int x）
+返回x的绝对值
+int absValue (int x){
+  if (x < 0){
+    return ;
+  }
+return x;
+}
+
+}

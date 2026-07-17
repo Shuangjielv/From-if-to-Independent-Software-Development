@@ -1,0 +1,35 @@
+Vector（动态数组）
+1.vector相比于数组有很多常用和快捷的函数可以调用
+  首先创建vector
+    #include <vector> \\使用vector数组需要在代码开头添加的前缀
+    vector<int> nums; \\int类型的数组
+    vector<string> words; \\字符串类型的数组
+    vector<char> chars; \\字符类型的数组
+2.初始化
+  vector<int> nums = {1,2,3,4,5}
+  以上和数组一样，下标也是从0开始
+  cout << nums[0];
+  cout << nums[4];
+  输出 1和5
+3.size()
+  vector<int> nums = {5,8,2,1};
+  cout << nums.size();
+  输出 4
+4.vector常见的重要函数
+  vector<int> nums;
+  nums.push_back(5); \\从末尾添加一个元素5
+  nums.pop_back(); \\从末尾删除一个元素
+  nums.front(); \\返回第一个元素
+  nums.back(); \\返回最后一个元素
+  nums.empty(); \\检测数组是否为空，空返回true
+5.vector的常见写法
+  C++
+
+  class Solution{
+  public:
+      vector<int> twoSum(vector<int>& nums,int target){
+      }
+  };
+
+  其中这里面的vector<int>& nums表示
+  twoSum数组内接收一个vector<int> 形式的nums数组

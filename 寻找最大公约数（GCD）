@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int findGCD(vector<int>& nums) {
+        int max = nums[0];
+        int min = nums[0];
+        for (int i = 0; i < nums.size(); i++){
+            if (nums[i] > max){
+                max = nums[i];
+            }
+            if (nums[i] < min){
+                min = nums[i];
+            }
+        }
+        int b;
+        if (max % min == 0){
+            return min;
+        }else{
+            while (min != 0){
+                b = min;
+                min = max % min;
+                max = b;
+            }
+            return max;
+        }
+    }
+};

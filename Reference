@@ -1,0 +1,112 @@
+一.什么是引用（Reference）
+  例如  
+    int a = 10;
+    int& b = a;
+  现在a和b其实是同一个东西，b只是a的另一个变量名，
+    cout << a << end1;
+    cout << b << end1;
+  得到的结果是
+    10
+    10
+  如果
+    b = 20；
+    cout << a << end1;
+  得到的结果就是
+    20
+二.普通赋值和引用的区别
+  普通赋值
+    int a = 5;
+    int b = a;
+  内存可以理解为
+    a ---> 5
+    b ---> 5
+  这是两个变量，如果修改
+    b = 100;
+  不会影响a，结果还是
+    a = 5;
+    b = 100
+  再看引用
+    int a = 5;
+    int& b = a;
+  可以理解为a 和 b都指向 5
+  修改任意一个，都会修改a和b的值
+三.引用必须初始化
+  错误
+    int& a;
+  编译失败，因为引用必须一开始就声明指向谁
+  必须
+    int x = 10;
+    int& a = x;
+四.引用对象不能更改
+  例如
+    int a = 10;
+    int b = 20;
+    int& r = a;
+    r = b;
+  结果是a = b，
+    a = 20
+    b = 20
+  引用关系没有变，r依旧是a的引用
+五.为什么需要引用
+  假如
+    void change(int x)
+    {
+      x = 100;
+    }
+
+    int a =5;
+    change (a);
+    cout << a;
+  输出还是5
+  因为change函数结束后x就被销毁了，这个代码只是将x = a，然后x = 100，a = 5
+  如果
+    void change(int& x)
+    {
+      x = 100;
+    }
+
+    int a =5;
+    change (a);
+    cout << a;
+  那么输出就会变成100，因为这里x就变成了a的引用，修改x的值也会修改a的值
+六.什么时候需要引用
+  修改变量的时候，常见的比如交换两个数
+    void swap(int& a, int& b)
+    {
+      int temp = a;
+      a = b;
+      b = temp;
+    }
+    int x = 3;
+    int y = 5;
+    swap(x, y);
+    cout << x << end1;
+    cout << y << end1;
+  输出就会得到
+    5
+    3
+七.const引用
+  例如
+    const string& s
+  假设
+    string name = "Tom";
+  如果写
+    void print(const string& s)
+    {
+      cout << s;
+    }
+  这里const表示只能读取不能更改
+  所以如果写
+    s = "Jack";
+  会显示编译失败，因为const的引用只能读取不能更改
+八.vector（数组）也经常有这样的引用
+  例如
+    void add(vector<int>& nums)
+    {
+      nums.push_back(100);
+    }
+    vector<int> v;
+    add(v);
+  函数结束后v数组里面就会多出一个100的元素
+  这样的好处就是，如果v输出有100000个元素，在add的函数里面，在运行add（vector<int>& nums）时不需要复制全部的100000个元素然后，在把100加到第100001的位置上，
+  这会极大的占用代码的运行效率，这里的nums数组就是v数组的引用，所以运行add函数的时候，就直接在原先的v数组后面增加一个100的元素即可

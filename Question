@@ -1,0 +1,20 @@
+1.写一个函数square(int& x), 把传入的整数直接改成它的平方
+  int square(int& x)
+  {
+    returan x*x;
+  }
+2.写一个函数swap（int& a, int& b）,交换两个整数
+  int swap (int& a, int& b)
+  {
+    temp = a;
+    a = b;
+    b = tamp;
+  }
+3.思考为什么
+    void print(const string& s)
+  比
+    void print(string s)
+  更加推荐
+
+  1.因为，代码不需要复制一遍s的字符串然后输出，如果s的字符串内存占用很大，会极大的影响代码运行效率
+  2.其次print这个函数没有权限修改它收到的字符串，这样能保证print这个函数的功能得到限制

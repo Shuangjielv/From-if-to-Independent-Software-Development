@@ -1,0 +1,54 @@
+Question
+要求：
+  1.创建一个父类person
+    . name
+    . age
+    . introduce
+  2.创建一个子类Student
+    . 新增major
+    . 新增study()
+  3.在main() 中：
+    . 创建一个Student
+    . 设置：
+          . name = "Tom"
+          . age = 20
+          . major = "Computer Science"
+    . 调用：
+      . introduce()
+      . study()
+
+class Person
+{
+public:
+  string name;
+  int age;
+
+  void introduce()
+  {
+    cout << "My name is " << name << end1;
+    cout << "I am " << age << " years od." << end1;
+  };
+};
+
+class Student : public Person
+{
+public:
+  string major;
+  void study()
+  {
+    cout << "Studying " << major << end1;
+  };
+};
+
+int main ()
+{
+  Student student;
+  student.name = "Tom";
+  student.age = 20;
+  student.major = "Computer Science";
+
+  student.introduce();
+  student.study();
+
+  return 0;
+}

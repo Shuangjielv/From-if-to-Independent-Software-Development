@@ -1,0 +1,98 @@
+一.为什么需要继承
+  现实生活中动物有个共同的特点：
+  . 名字
+  . 年龄
+  . 吃饭
+  但是不同的动物有不同的特点
+  狗： 汪汪叫
+  猫： 喵喵叫
+  鸟： 飞
+二.创建父类
+  class Animal
+  {
+  public:
+    string name;
+    int age;
+
+    void eat()
+    {
+      cout << name << "is eating.\n";
+    }
+  };
+然后狗
+  class Dog : public Animal
+  {
+  public:
+    void bark()
+    {
+      cout << "Woof!\n";
+    }
+  };
+这里的: public Animal
+意思就是Dog继承Animal
+可以理解成|Dog IS——A Animal（这是OOP最重要的一句话）
+三.使用继承
+创建对象：
+  Dog dog;
+
+  dog.name = "Lucky";
+  dog.age = 3;
+  dog.eat();
+  dog.bark();
+输出
+  Lucky is eating.
+  Woof!
+这里面Dog没有name/age/eat()但是可以直接使用，因为Dog继承了Animal
+四.多个子类
+  class Cat : public Animal
+  {
+  public:
+    void meow()
+    {
+      cout << "Meow\n";
+    }
+  };
+
+  class Bird : public Animal
+  {
+  public: 
+    void fly()
+    {
+      cout << "Flying\n";
+    }
+  };
+
+于是Animal -> Dog\Cat\Bird
+而所有的动物都有了name\age\eat()
+但是
+  Dog有bark()
+  Cat有meow()
+  Bird有fly()
+五.构造函数也会继承
+  class Animal
+  {
+  public:
+    Animal()
+    {
+      cout << "Animal Constructor\n";
+    }
+  };
+
+  class Dog : public Animal
+  {
+  };
+
+  Dog dog;
+
+  输出就会得到
+  Animal Constructor
+
+  因为创建Dog之前必须先创建Animal
+  而Animal创建的时候创建了构造函数Animal(),所以在创建Dog类型的dog对象的时候调用了Animal(),所以输出了Animal Contructor
+  这个例子就是为了帮助理解，在创建子类对象的时候，会先创建父类，然后调用父类的构造函数，再创建子类的内容
+六.什么时候应该使用继承
+  例如：Car\Engine
+  Car Has-A Engine 而不是 Car IS-A Engine
+  继承只适用于IS-A的关系，Dog IS-A Animal
+  
+

@@ -1,0 +1,43 @@
+Question
+1.定义一个Student类，要求包括
+  成员变量：
+. name
+. age
+. gpa
+  成员函数：
+. PrintInfo(),输出学生信息
+  然后再main()中：
+  1.创建两个student 对象。
+  2.分别赋予不同的值
+  3.调用printInfo（）输出两个学生的信息
+
+class Student
+{
+public：
+  string name;
+  int age;
+  double gpa;
+
+  void printInfo()
+  {
+    cout << "Name: " << name <<end1;
+    cout << "Age: " << age <<end1;
+    cout << "GPA: " << gpa <<end1;
+  }
+};
+
+int main()
+{
+  Student s1;
+  Student s2;
+
+  s1.name = "peter";
+  s1.age = 22;
+  s1.gpa = 3.9;
+  si.printInfo();
+
+  s2.name = "Alex";
+  s2.age = 22;
+  s2.gpa = 3.92;
+  s2.printInfo();
+}

@@ -1,0 +1,125 @@
+一.为什么需要Class（类）
+  假如有个玩家（player）
+
+  玩家有：
+  . 血量
+  . 名字
+  . 攻击力
+  . 等级
+
+  所以我们可以写
+  String playerName = "Tom";
+  int hp = 100;
+  int attack = 20;
+  int level = 1;
+  void attackEnemy(){
+    cout << "Attack!" << end1;
+  }
+  void levelup (){
+    level++;
+  }
+
+  但如果有100个玩家呢，相同的代码我们就需要定义100遍，会极大的占用内存
+  所以Class = 一个模板 也叫一个类
+二.什么是Class
+  来看一个最简单的例子
+    class Player
+    {
+    public:
+      string name;
+      int hp;
+      int attack;
+    };
+  这里定义的Player类就有三个成员变量：name hp attack
+  到目前为止我们只是创建了一个player的类
+三.创建对象（Object）
+  真正创建：
+    Player p1；
+  现在我们就创建了第一个玩家p1
+  给玩家p1赋值
+    p1.name = "Tom";
+    p1.hp = 100;
+    p1.attack = 20;
+
+    cout << p1.name << end1;
+    cout << p1.hp << end1;
+  就会得到输出
+    Tom
+    100
+四。对象就是变量
+  实际上
+   Player p1;
+  创建的是一个Player类型的变量（自定义类型）
+五.Class里面不仅能放变量还能放函数
+  例如
+    class Player
+    {
+    public:
+      string name;
+      int hp;
+
+      void printInfo()
+      {
+        cout << name << end1;
+        cout << hp << end1;
+      }
+    };
+  然后
+    Player p1;
+    p1.name = "Tome";
+    p1.hp = 100;
+
+    p1.printInfo();
+  输出
+    Tom
+    100
+六.public是什么意思
+  为什么要写public
+  因为Class默认是private也就是外面无法访问的类型
+    class Player
+    {
+      string name;
+    };
+  然后
+    player p1;
+    p1.name = "Tom";
+  编译失败
+  所以需要public
+    class Player
+    {
+    public：
+      string name;
+    };
+八.完整例子
+  #include <iostream>
+  using namespace std;
+
+  class Player
+  {
+  public:
+    string name;
+    int hp;
+    int attack;
+
+    vooid printInfo()
+    {
+      cout << "Name: " << name << end1;
+      cout << "HP: " << hp << end1;
+      cout << "Attack: " << attack << end1;
+  };
+
+  int main ()
+  {
+    Player P1;
+    p1.name = "Tom";
+    p1.hp = 100;
+    p1.attack = 25;
+
+    p1.printInfo();
+
+    return 0;
+  }
+  输出
+  Name: Tom
+  HP: 100
+  Attack: 25

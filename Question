@@ -1,0 +1,50 @@
+Question
+.写下面三个类
+    Animal-> Dog\Cat
+  要求
+    1.Animal有一个virtual introduce（）
+    2.Dog输出：I am a dog.
+    3.Cat输出：I am a cat.
+    4.在main()中
+      Dog dog;
+      Cat cat;
+
+      Animal* p1 = &dog;
+      Animal* p2 = &cat;
+
+      p1->introduce();
+      p2->introduce();
+
+class Animal {
+public:
+  virtual void introduce(){
+    cout << "Animal" << end1;
+  }
+};
+
+class Dog : public Animal {
+public:
+  void introduce() override{
+    cout << "I am a dog" << end1;
+  }
+};
+
+class Cat : public Animal {
+public:
+  void introduce() override{
+    cout << "I am a cat" << end1;
+  }
+};
+
+int main(){
+  Dog dog;
+  Cat cat;
+
+  Animal* p1 = &dog;
+  Animal* p2 = &cat;
+
+  p1->introduce();
+  p2->introduce();
+
+  retuan 0;
+}

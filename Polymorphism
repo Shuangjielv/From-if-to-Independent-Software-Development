@@ -1,0 +1,96 @@
+一.为什么需要多态（Polymorphism）
+  “让同一段代码，根据对象类型，自动执行不同的函数”
+  假设现在有动物：
+    class Animal {
+    public:
+      void speak() {
+          cout << "Animal sound" << end1;
+        }
+    };
+
+    class Dog : public Animal {
+    public:
+      void speak() {
+          cout << "Woof!" << end1;
+      }
+    };
+
+    class Cat : public Animal {
+    public: 
+      void speak() {
+        cout << "Meow!" << end1;
+      }
+    };
+  在我们创建对象
+    Dog dog;
+    Cat cat;
+
+    dog.speak();
+    cat.speak();
+  输出
+    Woof!
+    Meow!
+  可是如果有一百种甚至更多的动物呢，我们就需要写if (type=="dog") dog.speak(); ........
+二.virtual
+  多态是一个父类指针，指向不同子类的对象，调用同一个函数，却执行不同的代码
+  而真正的多态需要一个关键字：virtual
+    class Animal {
+    public:
+      virtual void speak() {
+          cout << "Animal" << endl;
+      }
+    };
+    class Dog : public Animal {
+    public:
+      void speak() {
+          cout << "Dog" << endl;
+      }
+    };
+  main函数中
+    Dog dog;
+    Animal* p = &dog;
+    p->speak();
+  输出就可以得到
+    Dog
+  如果没有virtual，p这个指针类型是Animal的所以指向的就是父类里的speak()
+  virtual的作用就是告诉编译器不要看指针类型，要看指针指向的对象，p的指针类型是Animal但是指向的是Dog类型的dog
+  所以会调用
+    Dog::speak()
+  这就是 运行时多态（Runtime Polymorphism）
+三.为什么叫运行时
+  因为在声明
+    Animal* p;
+  编译器已经决定
+    Animal::speak();
+  而在virtual以后，真正调用哪个函数是在程序运行时才知道的
+  在发现virtual后，p-> Dog 而不是Animal后，
+  于是调用
+    Dog::speak()
+  这就叫动态绑定（Dynamic Binding）
+四.override
+  在写void speak()时
+  可以写成
+    void speak() override
+  完整写法
+    class Dog : public Animal {
+    public:
+      void speak() override {
+          cout << "Dog" << endl;
+      }
+    };
+  好处在于如果写错了函数名
+    void speek() override
+  编译器会立马报错
+五.多个对象
+    Dog dog;
+    Cat cat;
+  统一放到父类指针
+    Animal* a1 = &dog;
+    Animal* a2 = &cat;
+  然后
+    a1->speak();
+    a2->speak();
+  输出
+    Dog
+    Cat
+  这就是同一个接口，多种表现

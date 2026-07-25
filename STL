@@ -1,0 +1,100 @@
+一.什么STL
+  STL = Standard Template Library
+  是C++官方提供的大量现成工具
+  例如：
+    vector
+    string
+    map
+    set
+    queue
+    stack
+    sort()
+    find()
+    reverse()
+二.iterator(迭代器)
+  可以理解成| 一个能够指向容器元素的位置
+  例如：
+    vector<int>::iterator it;
+  这里就定义了一个iterator（迭代器）it
+    it = nums.begin();
+  让it指向开头，begin(),指向vector的第一个元素，end(),则指向vector的最后一个元素的后一个位置
+    vector<int> nums = {3,5,8};
+  那么it -> 3
+    cout << *it;
+  输出  
+    3
+  这里*的作用就是解引用(dereference)
+  把这个位置对应的元素拿出来
+三.利用iterator遍历
+  以前
+    for(int i = 0; i <nums.size(); i++)
+  现在
+    for(auto it = nums.begin(); it != nums.end(); it++)
+    {
+      cout << *it << " ";
+    }
+  输出
+    3 5 8
+四.auto
+  这里 auto it = nums.begin();
+  就是 vector<int>::iterator it = nums.begin();
+  auto 就等同于 vector<int>::iterator it, 由于后者需要的代码太长，所以写auto让编译器自己推断
+五.algorithm
+  使用algorithm里面的函数需要写头文件
+    #include <algorithm>
+  里面有很多好用的函数
+  1.sort() 排序
+    vector<int> nums = {5,2,9,1}
+    sort(nums.begin(), nums.end());
+    for(int x : nums)
+    {
+        cout << x << " ";
+    }
+  输出
+    1 2 5 9
+  sort()本身是void没有返回类型的，排序之后改变的是nums里面的元素顺序
+  2.reverse() 翻转
+    vector<int> nums = {5,2,9,1}
+    reverse(nums.begin(), nums.end());
+    for(int x : nums)
+    {
+        cout << x << " ";
+    }
+  输出
+    9 5 2 1 
+  reverse()本身也是void没有返回类型的，是在排序nums里面的元素
+  3.find() 寻找元素
+    vector<int> nums = {5,2,9,1}
+    auto it = find(nums.begin(), nums.end(),5);
+  如果找到了it 会指向5
+  如果没找到 it 会指向 nums.end()
+    if(it != nums.end())
+    {
+        cout << "找到了";
+    }
+  这里it是指向数字，如果cout << *it; 会输出5
+  想要得到下标
+    vector<int> nums = {3,6,1,6,9};
+    auto it = find(nums.bein(), nums.end(), 6);
+    cout << it - nums.begin();
+  输出
+    1
+  一定要用it - nums.begin();  不能直接返回it因为it不是int类型，是迭代器的位置，类似于更高级的指针
+  it 不是 1 而是： “指向下标1的位置”
+  it - nums.begin();  是在问“it比begin()往后走了多少步” 两者直接相差一个元素，所以结果是1
+  例如
+    if (it - nums.begin() == 1)
+    {
+        cout << "在第二个元素";
+    }
+  4.count() 统计次数
+    vector<int> nums = {1,2,2,2,3}；
+    cout << count(nums.begin(), nums.end(), 2);
+  输出
+    3
+  5.min()
+    cout << min(3,7);
+    输出3
+  6.max()
+    cout << max(3,7);
+    输出7

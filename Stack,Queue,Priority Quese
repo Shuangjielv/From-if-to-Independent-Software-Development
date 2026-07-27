@@ -1,0 +1,91 @@
+一.Stack(栈)
+  栈遵循：后进先出 Last in First Out（LIFO）
+  例如：
+    #include <stack>
+    stack<int> st;
+
+    st.push(10);
+    st.push(20);
+    st.push(30);
+
+    cout << st.top(); // 输出 30
+
+    st.pop(); // 删除 30
+    cout << st.top(); // 输出 20
+
+    if(st,empty()) // 判断是否为空，空就返回true
+    cout << st.size(); // 返回st里面的元素个数，返回 2
+  完整例子：
+    #include <iostream>
+    #include <stack>
+    using namespace std;
+
+    int main()
+    {
+        stack<int> st;
+
+        st.push(1);
+        st.push(2);
+        st.push(3);
+
+        cout<<st.top()<<endl;
+
+        st.pop();
+
+        cout<<st.top()<<endl;
+    }
+  输出：
+    3
+    2
+二.Queue（队列）
+  队列遵循：先进先出/ First In First Out（FIFO）
+  例如：
+    #include <queue>
+    queue<int> q;
+
+    q.push(10);
+    q.push(20);
+    q.push(30);
+
+    cout << q.front(); // 输出队首 10
+    cout << q.back(); // 输出队尾 30
+
+    q.pop(); // 删除队首 10
+  完整例子：
+    queue<int> q;
+
+    q.push(1);
+    q.push(2);
+    q.push(3);
+
+    cout<<q.front()<<endl;
+
+    q.pop();
+
+    cout<<q.front()<<endl;
+  输出：
+    1
+    2
+三.Priority Queue（优先队列）
+  优先队列：默认最大数优先
+  例如：
+    push
+    3
+    8
+    2
+    10
+    5
+  实际内部会自动维护顺序，默认按照最大数在队首，从大到小排列
+    priority_queue<int> pq;
+
+    pq.push(5);
+    pq.push(1);
+    pq.push(10);
+    pq.push(8);
+
+    cout << pq.top; // 输出队首，默认最大值 输出10
+
+    pq.pop(); // 删除队首，默认删除最大值
+  如果想要最小值优先的Priority Queue，输入
+    priority_queue<int, vector<int>, greater<int>> pq;
+  这个代码就是建立相应的最小优先的优先队列，作用是让最小值优先弹出

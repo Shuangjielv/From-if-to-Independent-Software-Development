@@ -1,0 +1,30 @@
+Question
+1.(Stack)
+  依次输入：
+    5
+    8
+    2
+  然后执行：
+    pop();
+    push(10);
+    top();
+  输出什么？
+2.(Queue)
+  执行：
+    push(3);
+    push(5);
+    push(7);
+    pop();
+    front();
+  输出什么？
+3.(Priority Queue)
+  执行：
+    push();
+    push();
+    push();
+    push();
+    pop();
+    top();
+  输出什么？
+
+

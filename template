@@ -1,0 +1,48 @@
+一.模板（Templates）
+  模板的思想： 先把类型空出来，以后在做决定
+  例如
+    template<typename T>
+    T max(T a,T b)
+    {
+        return a > b ? a : b;
+    }
+  这里： T 就是一个占位符
+  T可以是int类型，可以是double类型
+  如果使用
+    cout << max(3,5);
+  编译器会看到3和5，都是int类型，于是自动生成 int max(int a,int b)
+  如果
+    cout << max(2.3,5.1);
+  编译器会自动生成
+    double max (double,double)
+  所以：模板不是运行时决定的，而是编译的时候生成代码
+二.Template的应用
+  template 实际上只有一句话
+    template<typename T>
+  意思就是： 下面这个函数里面的 T 可以替换成任何类型
+    template<typename T>
+    T add(T a, T b)
+    {
+        return a+b;
+    }
+三.模板可以用于类
+  例如 vector<int>
+  vector可以存int或者string等很多类
+  就是因为vector本身就是模板类
+    vector<int> nums; \\ T -> int
+    vector<string> name; \\ T -> string 
+  其中也包括自定义的类型
+四.写一个模板类
+  例如：
+    template<typename T>
+    class Box
+    {
+    public:
+        T value;
+    };
+
+    Box<int> a;
+    a.value = 10;
+
+    Box<string> b;
+    b.value = "hello";

@@ -1,0 +1,44 @@
+实际开发中，比二维数组更常见的是二维 vector
+
+一.二维vector
+  例如：
+    vector<vector<int>> nums =
+    {
+          {1,2,3},
+          {4,5,6,}
+    };
+  访问方式：
+    cout << nums[0][1]; \\ nums[i][j]
+  输出
+    2
+  i代表行，j代表列
+二.二维vector的大小
+  例如：行数
+    nums.size(); \\ 有多少行
+  结果输出
+    2
+  列数
+    nums[0].size(); \\ 第一行的列数
+  结果
+    3
+三.LeetCode常见的二维数组
+  常见的
+    vector<vector<int>>& grid
+  或者
+    vector<vector<char>>& board
+  例如
+    grid = 
+    {
+        {1,2,3},
+        {4,5,6},
+        {7,8,9},
+    };
+  其中grid[i][j] 就代表第i行第j列
+四.二维vector最常见的遍历模板
+    for(int i = 0; i < grid.size(); i++)
+    {
+        for(int j = 0; j < grid[i].size(); j++)
+        {
+              // 操作grid[i][j]
+        }
+    }

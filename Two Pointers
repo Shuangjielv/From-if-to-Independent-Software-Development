@@ -1,0 +1,50 @@
+一.双指针（Two Pointers）
+  双指针指的是：同时使用两个下标遍历数组
+二.双指针的四种经典类型
+  1.左右指针（Left & Right）
+    1 2 3 4 5
+    |        |
+    L        R
+    不断向中间移动
+    典型题：
+    . Reverse String
+    . Valid Palindrome
+    . Two Sum II (有序数组)
+  2.快慢指针（Fast & Slow）
+    0 1 2 3 4 5
+    |
+  Slow
+    |
+  Fast
+    fast每次都往前走slow跟着条件走：
+    例如：删除元素时，fast不断扫描，slow负责放答案
+  3.同向双指针
+      L ->
+      R ->
+      两个一起向右走
+    常见
+      .  删除重复
+      .  合并数组
+      .  Move Zeroes
+  4.滑动窗口
+    例如：
+      L ->
+      R ->
+    区别在于：
+    右指针不断扩张窗口
+      [1 , 2]
+    如果条件不满足，左指针缩小窗口
+      [2]
+  三.以反转字符串为例
+    void reverseString (vector<char>& s)
+    {
+        int left = 0;
+        int right = s.size() - 1;
+
+        while (left < rght)
+        {
+            swap(s[left], s[right]);
+            left++;
+            right--;
+        }
+    }

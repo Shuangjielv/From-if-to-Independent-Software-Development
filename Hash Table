@@ -1,0 +1,89 @@
+一.什么是哈希表
+  假设有一个电话簿
+    Tom -> 123456
+    Jack -> 654321
+    Lucy -> 888888
+  如果用数组储存：
+    vector<pair<string,int>> phoneBook;
+  要找到Tom，就需要一个一个比较，时间复杂度是
+    O(n)
+  哈希表的思想是：
+    | 通过一个哈希函数，把（Key）直接映射到一个储存位置
+  例如：
+    hash("Tom") = 5
+    hash("Jack") = 13
+    hash("Lucy") = 2
+  于是：
+    table[5] = Tom
+    table[13] = Jack
+    table[2] = Lucy
+  查找 Tom：
+    hash("Tom") -> 5 -> 直接访问 table[5]
+  因此平均时间复杂度就是：
+    O(1)
+二.unordered_map 和 unordered_set 的区别
+  Map 存的是
+    键 (Key) -> 值 (Value)
+  例如
+    apple -> 3
+    banana -> 5
+    orange -> 2
+  C++:
+    unordered_map<string,int> mp;
+  这里：
+    string -> Key
+    int -> value
+  Set (只有元素，没有value)
+    1
+    5
+    8
+    20
+  C++:
+    unordered_set<int> st;
+  作用通常是：
+    . 判断某个元素是否存在
+    . 自动去重
+三.常用操作
+  1.插入
+  Map:
+    unordered_map<string,int> mp;
+
+    mp["Tom"] = 90;
+    mp["Jack"] = 85;
+
+  Set:
+    unordered_set<int> st;
+
+    st.insert(5);
+    st.insert(8);
+  2.查询
+  Map:
+    cout << mp["Tom"】
+  输出：
+    90
+  Set:
+    if(st.count(5){
+        cout << "存在";
+    }
+  或者
+    if(st.find(5) != st.end())
+  3.删除
+    mp.erase("Tom");
+    st.erase(5);
+  4.判断是否存在
+  Map:
+    if(mp.count("Tom"))
+  Set:
+    if(st.count(5))
+  count()返回：
+    1
+  或者
+    0
+四.什么时候用哈希表
+  . 是否存在某个元素
+  . 是否出现过
+  . 查找速度要快
+  . 去重
+  . 两数之和
+  . 统计出现次数
+  . 判断两个集合是否有交集

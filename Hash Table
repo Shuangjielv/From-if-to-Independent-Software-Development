@@ -87,3 +87,63 @@
   . 两数之和
   . 统计出现次数
   . 判断两个集合是否有交集
+五.如何遍历unordered_map
+s = "anagram"
+t = "nagaram"
+检测t是不是由s打乱重组得到
+class Solution {
+  public:
+    bool isAnagram(string s, string t) {
+        unordered_map<char, int> mp;
+        
+        for(char c : s){
+            mp[c]++;
+        }
+        for(char c : t){
+            mp[c]--;
+        }
+        for(auto x : mp){
+            if(x.second != 0 ){
+               return false;
+            }
+        }
+        return true;
+    }
+};
+这里的for(char c : s)是在C++11后使用的，等同于
+    for(int i = 0; i < s.size(); i++)
+遍历map的方式在于for(auto x : mp)
+  这里的auto是让编译器自主识别类型，全写是for(pair<char, int> x : mp)
+  因为map类型有两个元素，first是char类型的key， second是int类型的value
+  所以auto x ：p的含义就是遍历一遍mp，第一次x就等于下标为0的mp<'a', 3>
+在有些时候还会出现for(auto& x ：mp)
+  这里的 & 代表引用，在引用的前提下，for循环内对mp执行修改的函数会直接修改mp
+  ，而没有 & 的情况是在函数内建立一个mp的副本执行函数，对原本的mp不会进行修改
+六.常见的unordered_set 用法
+  Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+  Example 1:
+  Input: nums = [1,2,3,1]
+  Output: true
+  Explanation:
+  The element 1 occurs at the indices 0 and 3.
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        unordered_set<int> st;
+        for(int i = 0;i < nums.size(); i++){
+            if(st.count(nums[i])){
+                return true;
+            }
+            st.insert(nums[i]);
+        }
+        return false;
+        
+    }
+};
+
+“在哈希表里面的insert函数会自动去重”，也就是说，当执行一个：
+  insert(nums[i]);
+时，会自动判断之前有没有存过nums[i]的值，比如在下标为0的位置存了，在下标为3
+的位置再次遍历到1，就不会存入
+这道题因为需要我们自己找到重复的位置，所以需要加一个 if自己判断。

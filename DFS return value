@@ -1,0 +1,45 @@
+一.DFS的返回值
+  之前写的是
+    void dfs(...)
+  也就是DFS进去，把能访问的地方处理掉，然后结束
+  但是很多题目要求DFS返回一个结果，例如：
+    | 这个岛屿到底有多大
+二.这里有一个非常重要的DFS思维
+  | DFS不仅可以“走”，还可以“从递归深处把结果带回来”
+三.计算岛屿最大面积
+  这道题对应LeetCode 695（Max Area of Island）
+  题目要求找到面积最大的岛，因此DFS就需要返回每一个岛屿的面积
+  核心思想非常简单：
+    int dfs(...) {
+
+    if(不能走)
+        return 0;
+
+    grid[i][j] = 0;
+
+    return 1
+         + dfs(上)
+         + dfs(下)
+         + dfs(左)
+         + dfs(右);
+    }
+四.重要模板
+    int dfs(vector<vector<int>>& grid, int i, int j) {
+
+    if(i < 0 || i >= grid.size() ||
+       j < 0 || j >= grid[0].size()) {
+        return 0;
+    }
+
+    if(grid[i][j] == 0) {
+        return 0;
+    }
+
+    grid[i][j] = 0;
+
+    return 1
+        + dfs(grid, i - 1, j)
+        + dfs(grid, i + 1, j)
+        + dfs(grid, i, j - 1)
+        + dfs(grid, i, j + 1);
+    }

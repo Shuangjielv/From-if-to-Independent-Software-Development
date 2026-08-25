@@ -1,0 +1,39 @@
+一.单调栈
+  普通栈的核心是：
+    | 先进先出（LIFO）
+  例如：
+    stack<int> st;
+
+    st.push(3);
+    st.push(5);
+    st.push(7);
+  单调栈要求：
+    | 栈里面的元素保持单调性
+二.以739 Daily Temperatures 为例
+  题目：
+    temperatures = [73,74,75,71,69,72,76,73]
+  要求：
+    对于每天，过几天才能遇到一个更高的温度？
+  答案：
+    [1,1,4,2,1,1,0,0]
+  代码框架：
+    vector<int> dailyTemperatures(vector<int>& temperatures) {
+    int n = temperatures.size();
+    vector<int> ans(n, 0);
+    stack<int> st; // st栈里面存的是下标，而不是具体的温度
+
+    for(int i = 0; i < n; i++){
+        while(!st.empty() &&
+              temperatures[i] > temperatures[st.top()]) // 保持栈的单调性，出现破坏单调性的元素，就从栈里面弹出元素
+        {
+            int index = st.top();
+            st.pop();
+            ans[index] = i - index; // 相差的天数，就是栈里储存的下标和新的下标差
+        }
+        st.push(i);
+    }
+    return ans;
+}
+
+  这就是单调栈最核心的一句话：
+    || 当新元素到来时，如果它破坏了栈的单调性，就不断弹出栈顶，而每一个被弹出的元素，此时都找到了自己的答案。
